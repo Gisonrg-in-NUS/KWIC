@@ -20,22 +20,27 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import main.archit1.control.MasterControl;
+import main.archit2.controller.KWICPipesAndFiltersController;
+import main.archit2.helper.IgnoreHelper;
 
 public class MainUiWindow extends JFrame {
 
 	private static final long serialVersionUID = 2734069422557954195L;
 
-	private MasterControl controller;
-	
+	private boolean isUsingEventArchitecture = false;
+	private MasterControl controller1;
+	private KWICPipesAndFiltersController controller2;
+
 	private JTextArea linesInput;
 	private JTextArea ignoreWordsInput;
 	private JTextArea resultsOutput;
 	private JButton generateButton;
 	private JButton clearAllButton;
 
-	public MainUiWindow(MasterControl controller) {
+	public MainUiWindow(MasterControl controller1, KWICPipesAndFiltersController controller2) {
 		super("Key Word In Context");
-		this.controller = controller;
+		this.controller1 = controller1;
+		this.controller2 = controller2;
 
 		JPanel mainPanel = new JPanel(new GridLayout(3, 1));
 
@@ -96,6 +101,9 @@ public class MainUiWindow extends JFrame {
 		// Set up events
 		attachButtonEvents();
 
+		// Run pipeline ctrl
+		controller2.run();
+
 		pack();
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -110,20 +118,26 @@ public class MainUiWindow extends JFrame {
 				String inputLines = linesInput.getText();
 				String[] lines = inputLines.split("\n");
 				List<String> linesList = Arrays.asList(lines);
-				
+
 				// Get input lines
 				String ignoreWords = ignoreWordsInput.getText();
 				String[] ignoreWordsList = ignoreWords.split("\n");
 				Set<String> ignoreWordsSet = new HashSet<>();
 				for (String word : ignoreWordsList) {
-					ignoreWordsSet.add(word);
+					ignoreWordsSet.add(word.toLowerCase());
 				}
-				List<String> result = controller.run(linesList, ignoreWordsSet);
-				
-				showResults(result);
+
+				if (isUsingEventArchitecture) {
+					List<String> result = controller1.run(linesList, ignoreWordsSet);
+					showResults(result);
+				} else {
+					IgnoreHelper.init(ignoreWordsSet);
+					controller2.getInput().write(lines);
+					controller2.getOutput().setJTextArea(resultsOutput);
+				}
 			}
 		});
-		
+
 		clearAllButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -133,7 +147,7 @@ public class MainUiWindow extends JFrame {
 			}
 		});
 	}
-	
+
 	private void showResults(List<String> result) {
 		if (result.isEmpty()) {
 			resultsOutput.setText("");
@@ -144,7 +158,8 @@ public class MainUiWindow extends JFrame {
 			builder.append(entry);
 			builder.append("\n");
 		}
-		builder.setLength(builder.length() - 1); // remove the new line in the end
+		builder.setLength(builder.length() - 1); // remove the new line in the
+													// end
 		resultsOutput.setText(builder.toString());
 	}
 }
