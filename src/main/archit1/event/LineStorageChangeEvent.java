@@ -1,4 +1,4 @@
-package main.event;
+package main.archit1.event;
 
 public class LineStorageChangeEvent extends BaseEvent {
 	public enum LineStorageChangeType {

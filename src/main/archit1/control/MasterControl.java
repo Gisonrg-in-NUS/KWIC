@@ -1,11 +1,11 @@
-package main.control;
+package main.archit1.control;
 
 import java.util.List;
 import java.util.Set;
 
-import main.data.LineStorage;
-import main.module.alphabetizer.Alphabetizer;
-import main.module.shifter.CircularShifter;
+import main.archit1.data.LineStorage;
+import main.archit1.module.alphabetizer.Alphabetizer;
+import main.archit1.module.shifter.CircularShifter;
 
 public class MasterControl {
 	final private Alphabetizer alphabetizer;

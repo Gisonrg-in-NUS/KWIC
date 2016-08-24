@@ -1,4 +1,4 @@
-package test.data;
+package test.archit1.data;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.data.LineStorage;
+import main.archit1.data.LineStorage;
 
 public class LineStorageTest {
 

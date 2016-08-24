@@ -1,4 +1,4 @@
-package main.module;
+package main.archit1.module;
 
 import java.util.Observer;
 

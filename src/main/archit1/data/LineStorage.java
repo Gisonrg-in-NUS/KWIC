@@ -1,12 +1,12 @@
-package main.data;
+package main.archit1.data;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.stream.Collectors;
 
-import main.event.LineStorageChangeEvent;
-import main.event.LineStorageChangeEvent.LineStorageChangeType;
+import main.archit1.event.LineStorageChangeEvent;
+import main.archit1.event.LineStorageChangeEvent.LineStorageChangeType;
 
 public class LineStorage extends Observable {
 

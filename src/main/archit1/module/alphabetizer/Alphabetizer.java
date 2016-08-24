@@ -1,11 +1,11 @@
-package main.module.alphabetizer;
+package main.archit1.module.alphabetizer;
 
 import java.util.Observable;
 
-import main.data.LineStorage;
-import main.data.Line;
-import main.event.LineStorageChangeEvent;
-import main.module.BaseModule;
+import main.archit1.data.Line;
+import main.archit1.data.LineStorage;
+import main.archit1.event.LineStorageChangeEvent;
+import main.archit1.module.BaseModule;
 
 public class Alphabetizer implements BaseModule {
 	@Override

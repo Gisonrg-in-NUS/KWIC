@@ -1,4 +1,4 @@
-package test.data;
+package test.archit1.data;
 
 import static org.junit.Assert.*;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import main.data.Line;
+import main.archit1.data.Line;
 
 public class LineTest {
 

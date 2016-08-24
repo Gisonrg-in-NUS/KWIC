@@ -1,12 +1,12 @@
-package test.module.alphabetizer;
+package test.archit1.module.alphabetizer;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import main.data.LineStorage;
-import main.module.alphabetizer.Alphabetizer;
+import main.archit1.data.LineStorage;
+import main.archit1.module.alphabetizer.Alphabetizer;
 
 public class AlphabetizerTest {
 	LineStorage storage;

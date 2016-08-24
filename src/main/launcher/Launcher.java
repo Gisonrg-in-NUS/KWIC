@@ -1,6 +1,6 @@
 package main.launcher;
 
-import main.control.MasterControl;
+import main.archit1.control.MasterControl;
 import main.ui.MainUiWindow;
 
 public class Launcher {

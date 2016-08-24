@@ -1,4 +1,4 @@
-package main.module.shifter;
+package main.archit1.module.shifter;
 
 import java.util.HashSet;
 import java.util.List;
@@ -7,10 +7,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import main.data.LineStorage;
-import main.data.Line;
-import main.event.LineStorageChangeEvent;
-import main.module.BaseModule;
+import main.archit1.data.Line;
+import main.archit1.data.LineStorage;
+import main.archit1.event.LineStorageChangeEvent;
+import main.archit1.module.BaseModule;
 
 public class CircularShifter implements BaseModule {
 	final private LineStorage resultStorage;

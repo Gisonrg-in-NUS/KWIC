@@ -1,4 +1,4 @@
-package main.data;
+package main.archit1.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;

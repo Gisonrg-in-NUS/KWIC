@@ -19,7 +19,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-import main.control.MasterControl;
+import main.archit1.control.MasterControl;
 
 public class MainUiWindow extends JFrame {
 
