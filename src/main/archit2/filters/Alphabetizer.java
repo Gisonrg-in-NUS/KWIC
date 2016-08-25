@@ -1,5 +1,6 @@
 package main.archit2.filters;
 
+import java.awt.List;
 import java.util.ArrayList;
 
 import main.archit2.helper.IgnoreHelper;
@@ -12,7 +13,7 @@ public class Alphabetizer implements Filters<String[], String[]> {
 	public StringArrayPipe inputChannel;
 	public StringArrayPipe outputChannel;
 
-	public Alphabetizer(Pipe inputChannel, Pipe outputChannel) {
+	public Alphabetizer(Pipe<?> inputChannel, Pipe<?> outputChannel) {
 		this.inputChannel = (StringArrayPipe) inputChannel;
 		this.outputChannel = (StringArrayPipe) outputChannel;
 	}
@@ -32,16 +33,17 @@ public class Alphabetizer implements Filters<String[], String[]> {
 		String first = array.get(beg);
 		int i = beg, j = end;
 		while (i < j) {
-			while (larger(first, array.get(i)) && i < end) {
+			while (larger(first, array.get(i)) && i < j) {
 				i++;
 			}
-			while (larger(array.get(j), first) && j >= beg) {
+			while (larger(array.get(j), first) && j > i) {
 				j--;
 			}
 			if (i < j) {
 				String tmpStr = array.get(i);
 				array.set(i, array.get(j));
 				array.set(j, tmpStr);
+				j--;
 			}
 		}
 		if (j != beg) {
@@ -94,6 +96,7 @@ public class Alphabetizer implements Filters<String[], String[]> {
 			if (IgnoreHelper.ifIgnore(tmpStr)) {
 				ans.add(tmpStr.toLowerCase());
 			} else {
+
 				String newStr = tmpStr.substring(0, 1).toUpperCase();
 				if (tmpStr.length() > 1) {
 					newStr += tmpStr.substring(1, tmpStr.length());
@@ -116,7 +119,6 @@ public class Alphabetizer implements Filters<String[], String[]> {
 	public String[] sort() {
 		ArrayList<String> dataSet = new ArrayList<String>();
 		for (String tmpStr : data) {
-			System.out.println(tmpStr);
 			dataSet.add(tmpStr);
 		}
 		quickSort(dataSet);
@@ -128,16 +130,23 @@ public class Alphabetizer implements Filters<String[], String[]> {
 		while (true) {
 			try {
 				data = read();
+				String[] generatedStrings = sort();
+				ArrayList<String> noDuplicate = new  ArrayList<String>();
+				for (int i = 0; i < generatedStrings.length; i++) {
+					generatedStrings[i] = formalize(generatedStrings[i]);
+					if (i ==0 ){
+						noDuplicate.add(generatedStrings[i]);
+					}else if (!generatedStrings[i].equals(generatedStrings[i-1])){
+						noDuplicate.add(generatedStrings[i]);
+					}
+				}
+				String[] finalStrs = new String[noDuplicate.size()];
+				noDuplicate.toArray(finalStrs);
+				write(finalStrs);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			String[] generatedStrings = sort();
-			for (int i = 0; i < generatedStrings.length; i++) {
-				generatedStrings[i] = formalize(generatedStrings[i]);
-			}
-			System.out.println(generatedStrings);
-			write(generatedStrings);
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		}
 	}
 }

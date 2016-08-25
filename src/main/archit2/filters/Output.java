@@ -11,7 +11,7 @@ public class Output implements Filters<String[], String[]> {
 	public StringArrayPipe inputChannel;
 	public StringArrayPipe outputChannel;
 
-	public Output(Pipe inputChannel, Pipe outputChannel) {
+	public Output(Pipe<?> inputChannel, Pipe<?> outputChannel) {
 		this.inputChannel = (StringArrayPipe) inputChannel;
 		this.outputChannel = (StringArrayPipe) outputChannel;
 	}

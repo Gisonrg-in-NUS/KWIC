@@ -14,7 +14,7 @@ public class CircularShift implements Filters<String[], String[]> {
 	public StringArrayPipe inputChannel;
 	public StringArrayPipe outputChannel;
 
-	public CircularShift(Pipe inputChannel, Pipe outputChannel) {
+	public CircularShift(Pipe<?> inputChannel, Pipe<?> outputChannel) {
 		this.inputChannel = (StringArrayPipe) inputChannel;
 		this.outputChannel = (StringArrayPipe) outputChannel;
 	}
@@ -56,7 +56,6 @@ public class CircularShift implements Filters<String[], String[]> {
 				ans.add(combineStrings(tmpArr));
 			}
 			String first = tmpArr.get(0);
-			System.out.println(first + "debug1");
 			tmpArr.remove(0);
 			tmpArr.add(first);
 		}
@@ -69,7 +68,6 @@ public class CircularShift implements Filters<String[], String[]> {
 		List<String> subans;
 
 		for (String tmpStr : data) {
-			System.out.println(tmpStr);
 			subans = CircularShiftForString(tmpStr);
 			for (String str : subans) {
 				ans.add(str);
@@ -87,12 +85,12 @@ public class CircularShift implements Filters<String[], String[]> {
 		while (true) {
 			try {
 				data = read();
+				String[] generatedStrings = CircularShiftForStrings();
+				write(generatedStrings);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String[] generatedStrings = CircularShiftForStrings();
-			write(generatedStrings);
 		}
 
 	}
