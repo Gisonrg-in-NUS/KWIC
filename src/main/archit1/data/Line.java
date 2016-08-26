@@ -37,6 +37,9 @@ public class Line implements Comparable<Line> {
 	}
 
 	public String toString() {
+		if (words.isEmpty()) {
+			return "";
+		}
 		StringBuilder builder = new StringBuilder();
 		for (String word : words) {
 			builder.append(word);
@@ -48,6 +51,6 @@ public class Line implements Comparable<Line> {
 
 	@Override
 	public int compareTo(Line o) {
-		return this.words.get(0).toLowerCase().compareTo(o.getWord(0).toLowerCase());
+		return this.toString().toLowerCase().compareTo(o.toString().toLowerCase());
 	}
 }
