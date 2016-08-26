@@ -16,6 +16,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -27,7 +28,7 @@ import javax.swing.border.TitledBorder;
 import main.constants.ArchitectureType;
 import main.ui.UiController.KwicUi;
 
-public class NewUiWindow extends JFrame implements KwicUi {
+public class ManView extends JFrame implements KwicUi {
 
 	private static final long serialVersionUID = -3445311782196514706L;
 
@@ -36,11 +37,12 @@ public class NewUiWindow extends JFrame implements KwicUi {
 	private JTextArea resultsOutput;
 	private JButton generateButton;
 	private JButton clearAllButton;
+	private JButton exportResultButton;
 	private ArchitectureType currentType = ArchitectureType.IMPLICT_INVOKE;
 	
 	private UiController controller;
 	
-	public NewUiWindow() {
+	public ManView() {
 		super("Key Word In Context");
 		add(createAndAddComponents());
 		attachButtonEvents();
@@ -119,11 +121,13 @@ public class NewUiWindow extends JFrame implements KwicUi {
 		// Operation area
 		generateButton = new JButton("Generate");
 		clearAllButton = new JButton("Clear All");
+		exportResultButton = new JButton("Export");
 
 		operationPanel.setLayout(new BoxLayout(operationPanel, BoxLayout.X_AXIS));
 		operationPanel.add(Box.createHorizontalGlue());
 		operationPanel.add(generateButton);
 		operationPanel.add(clearAllButton);
+		operationPanel.add(exportResultButton);
 		operationPanel.add(Box.createHorizontalGlue());
 		
 		GridBagConstraints c = new GridBagConstraints();
@@ -169,6 +173,14 @@ public class NewUiWindow extends JFrame implements KwicUi {
 				linesInput.setText("");
 				ignoreWordsInput.setText("");
 				resultsOutput.setText("");
+			}
+		});
+		
+		exportResultButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.exportResultToFile(resultsOutput.getText());
+				JOptionPane.showMessageDialog(null, "My Goodness, this is so concise");
 			}
 		});
 	}

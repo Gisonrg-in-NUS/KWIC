@@ -1,5 +1,8 @@
 package main.ui;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -49,5 +52,23 @@ public class UiController {
 				System.out.println("Unsupported Architecture");
 				break;
 		}
+	}
+
+	public void exportResultToFile(String data) {
+		BufferedWriter writer = null;
+	    try {
+	        writer = new BufferedWriter(new FileWriter("./output.txt"));
+	        view.getOutputTextArea().write(writer);
+	    } catch (IOException e) {
+	        System.err.println(e);
+	    } finally {
+	        if (writer != null) {
+	            try {
+	                writer.close();
+	            } catch (IOException e) {
+	                System.err.println(e);
+	            }
+	        }
+	    }
 	}
 }
