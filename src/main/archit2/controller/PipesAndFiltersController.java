@@ -6,7 +6,7 @@ import main.archit2.filters.Input;
 import main.archit2.filters.Output;
 import main.archit2.pipes.StringArrayPipe;
 
-public class KWICPipesAndFiltersController {
+public class PipesAndFiltersController {
 	StringArrayPipe pipeForInputCircularShift = new StringArrayPipe();
 	StringArrayPipe pipeForCircularShiftAlphabetizer = new StringArrayPipe();
 	StringArrayPipe pipeForAlphabetizerOutput = new StringArrayPipe();
@@ -17,7 +17,7 @@ public class KWICPipesAndFiltersController {
 	Output output = new Output(pipeForAlphabetizerOutput, null);
 	Thread thread1 = new Thread(input, "Input thread");
 	Thread thread2 = new Thread(circularShift, "circularShift");
-	Thread thread3 = new Thread(alphabetizer, "circularShift");
+	Thread thread3 = new Thread(alphabetizer, "Alphabetizer");
 	Thread thread4 = new Thread(output, "Output thread");
 
 	public void run() {
@@ -34,5 +34,4 @@ public class KWICPipesAndFiltersController {
 	public Output getOutput() {
 		return output;
 	}
-
 }

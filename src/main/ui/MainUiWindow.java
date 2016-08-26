@@ -19,8 +19,8 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-import main.archit1.control.MasterControl;
-import main.archit2.controller.KWICPipesAndFiltersController;
+import main.archit1.controller.ImplicitInvocationController;
+import main.archit2.controller.PipesAndFiltersController;
 import main.archit2.helper.IgnoreHelper;
 
 public class MainUiWindow extends JFrame {
@@ -28,8 +28,8 @@ public class MainUiWindow extends JFrame {
 	private static final long serialVersionUID = 2734069422557954195L;
 
 	private boolean isUsingEventArchitecture = false;
-	private MasterControl controller1;
-	private KWICPipesAndFiltersController controller2;
+	private ImplicitInvocationController controller1;
+	private PipesAndFiltersController controller2;
 
 	private JTextArea linesInput;
 	private JTextArea ignoreWordsInput;
@@ -37,7 +37,7 @@ public class MainUiWindow extends JFrame {
 	private JButton generateButton;
 	private JButton clearAllButton;
 
-	public MainUiWindow(MasterControl controller1, KWICPipesAndFiltersController controller2) {
+	public MainUiWindow(ImplicitInvocationController controller1, PipesAndFiltersController controller2) {
 		super("Key Word In Context");
 		this.controller1 = controller1;
 		this.controller2 = controller2;

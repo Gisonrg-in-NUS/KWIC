@@ -1,4 +1,4 @@
-package main.archit1.control;
+package main.archit1.controller;
 
 import java.util.List;
 import java.util.Set;
@@ -7,14 +7,14 @@ import main.archit1.data.LineStorage;
 import main.archit1.module.alphabetizer.Alphabetizer;
 import main.archit1.module.shifter.CircularShifter;
 
-public class MasterControl {
+public class ImplicitInvocationController {
 	final private Alphabetizer alphabetizer;
 	final private CircularShifter shifter;
 
 	private LineStorage rawInputLines;
 	private LineStorage resultLines;
 
-	public MasterControl() {
+	public ImplicitInvocationController() {
 		// Storage
 		rawInputLines = new LineStorage();
 		resultLines = new LineStorage();

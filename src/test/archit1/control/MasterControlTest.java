@@ -10,15 +10,15 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.archit1.control.MasterControl;
+import main.archit1.controller.ImplicitInvocationController;
 
 public class MasterControlTest {
 
-	MasterControl master;
+	ImplicitInvocationController master;
 	
 	@Before
 	public void setUp() {
-		master = new MasterControl();
+		master = new ImplicitInvocationController();
 	}
 	
 	@Test

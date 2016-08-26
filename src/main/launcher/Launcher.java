@@ -1,13 +1,13 @@
 package main.launcher;
 
-import main.archit1.control.MasterControl;
-import main.archit2.controller.KWICPipesAndFiltersController;
-import main.ui.MainUiWindow;
+import main.ui.NewUiWindow;
+import main.ui.UiController;
+import main.ui.UiController.KwicUi;
 
 public class Launcher {
 	public static void main(String[] args) {
-		MasterControl implictInovkeController = new MasterControl();
-		KWICPipesAndFiltersController piplineController = new KWICPipesAndFiltersController();
-		new MainUiWindow(implictInovkeController, piplineController);
+		KwicUi view = new NewUiWindow();
+		UiController controller = new UiController(view);
+		view.setController(controller);
 	}
 }
