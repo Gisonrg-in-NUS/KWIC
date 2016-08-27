@@ -28,7 +28,7 @@ import javax.swing.border.TitledBorder;
 import main.constants.ArchitectureType;
 import main.ui.UiController.KwicUi;
 
-public class ManView extends JFrame implements KwicUi {
+public class MainView extends JFrame implements KwicUi {
 
 	private static final long serialVersionUID = -3445311782196514706L;
 
@@ -42,7 +42,7 @@ public class ManView extends JFrame implements KwicUi {
 	
 	private UiController controller;
 	
-	public ManView() {
+	public MainView() {
 		super("Key Word In Context");
 		add(createAndAddComponents());
 		attachButtonEvents();
@@ -180,7 +180,7 @@ public class ManView extends JFrame implements KwicUi {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.exportResultToFile(resultsOutput.getText());
-				JOptionPane.showMessageDialog(null, "My Goodness, this is so concise");
+				JOptionPane.showMessageDialog(null, "Data exported to output.txt");
 			}
 		});
 	}
