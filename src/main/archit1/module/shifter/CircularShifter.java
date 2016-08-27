@@ -61,6 +61,8 @@ public class CircularShifter implements BaseModule {
 			String word = line.getWord(i);
 			if (isIgnoreWord(word)) {
 				line.setWord(i, word.toLowerCase());
+			} else {
+				line.setWord(i, Character.toUpperCase(word.charAt(0)) + word.substring(1)); // capitalize keyword
 			}
 		}
 	}
