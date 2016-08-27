@@ -120,7 +120,7 @@ public class Alphabetizer implements Filters<String[], String[]> {
 	public String[] sort() {
 		ArrayList<String> dataSet = new ArrayList<String>();
 		for (String tmpStr : data) {
-			dataSet.add(tmpStr);
+			dataSet.add(tmpStr.toLowerCase());
 		}
 		Collections.sort(dataSet);
 		//quickSort(dataSet);
