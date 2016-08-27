@@ -39,8 +39,8 @@ public class AlphabetizerTest {
 		words.add("ignore");
 		IgnoreHelper.init(words);
 		String[] ans = alphabetizer.sort();
-		assertEquals("Abc Def Ghi ignore", alphabetizer.formalize(ans[0]));
-		assertEquals("Def Ghi Abc ignore", alphabetizer.formalize(ans[1]));
-		assertEquals("Ghi Abc Def ignore", alphabetizer.formalize(ans[2]));
+		assertEquals("Abc Def Ghi ignore", Alphabetizer.formalize(ans[0]));
+		assertEquals("Def Ghi Abc ignore", Alphabetizer.formalize(ans[1]));
+		assertEquals("Ghi Abc Def ignore", Alphabetizer.formalize(ans[2]));
 	}
 }
