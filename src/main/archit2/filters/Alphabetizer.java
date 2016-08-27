@@ -2,6 +2,7 @@ package main.archit2.filters;
 
 import java.awt.List;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import main.archit2.helper.IgnoreHelper;
 import main.archit2.pipes.Pipe;
@@ -121,7 +122,8 @@ public class Alphabetizer implements Filters<String[], String[]> {
 		for (String tmpStr : data) {
 			dataSet.add(tmpStr);
 		}
-		quickSort(dataSet);
+		Collections.sort(dataSet);
+		//quickSort(dataSet);
 		return dataSet.toArray(data);
 	}
 
