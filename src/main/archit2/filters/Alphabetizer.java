@@ -3,10 +3,24 @@ package main.archit2.filters;
 import java.awt.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 import main.archit2.helper.IgnoreHelper;
 import main.archit2.pipes.Pipe;
 import main.archit2.pipes.StringArrayPipe;
+
+class WordComparator<String> implements Comparator{
+
+	@Override
+	public int compare(Object arg0, Object arg1) {
+		java.lang.String str0 = (java.lang.String) arg0.toString();
+		java.lang.String str1 = (java.lang.String) arg1.toString();
+		java.lang.String lower1 = str0.toLowerCase();
+		java.lang.String lower2 = str1.toLowerCase();
+		return lower1.compareTo(lower2);
+	}
+	
+}
 
 public class Alphabetizer implements Filters<String[], String[]> {
 
@@ -92,17 +106,23 @@ public class Alphabetizer implements Filters<String[], String[]> {
 
 	public static String formalize(String str) {
 		String[] words = str.split(" ");
+		int first = 1;
 		ArrayList<String> ans = new ArrayList<String>();
+		
 		for (String tmpStr : words) {
 			if (IgnoreHelper.ifIgnore(tmpStr)) {
 				ans.add(tmpStr.toLowerCase());
 			} else {
-
-				String newStr = tmpStr.substring(0, 1).toUpperCase();
-				if (tmpStr.length() > 1) {
-					newStr += tmpStr.substring(1, tmpStr.length());
+				if (first == 1){
+					String newStr = tmpStr.substring(0, 1).toUpperCase();
+					if (tmpStr.length() > 1) {
+						newStr += tmpStr.substring(1, tmpStr.length());
+					}
+					ans.add(newStr);
+					first = 0;
+				}else{
+					ans.add(tmpStr);
 				}
-				ans.add(newStr);
 			}
 		}
 		String finalStr = "";
@@ -120,9 +140,9 @@ public class Alphabetizer implements Filters<String[], String[]> {
 	public String[] sort() {
 		ArrayList<String> dataSet = new ArrayList<String>();
 		for (String tmpStr : data) {
-			dataSet.add(tmpStr.toLowerCase());
+			dataSet.add(tmpStr);
 		}
-		Collections.sort(dataSet);
+		Collections.sort(dataSet,new WordComparator());
 		//quickSort(dataSet);
 		return dataSet.toArray(data);
 	}
@@ -144,7 +164,8 @@ public class Alphabetizer implements Filters<String[], String[]> {
 				}
 				String[] finalStrs = new String[noDuplicate.size()];
 				noDuplicate.toArray(finalStrs);
-				write(finalStrs);
+				//write(finalStrs); //This is for remove duplicate array
+				write(generatedStrings);
 			} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
