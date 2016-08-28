@@ -53,4 +53,12 @@ public class Line implements Comparable<Line> {
 	public int compareTo(Line o) {
 		return this.toString().toLowerCase().compareTo(o.toString().toLowerCase());
 	}
+	
+	public void capitalizeFirstWord() {
+		if (words.isEmpty()) {
+			return;
+		}
+		String word = words.get(0);
+		this.setWord(0, Character.toUpperCase(word.charAt(0)) + word.substring(1)); // capitalize keyword
+	}
 }

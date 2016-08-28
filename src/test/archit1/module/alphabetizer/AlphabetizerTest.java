@@ -26,9 +26,9 @@ public class AlphabetizerTest {
 		storage.addLine("abc def ghi");
 		
 		assertEquals(3, storage.size());
-		assertEquals("abc def ghi", storage.get(0).toString());
-		assertEquals("def ghi abc", storage.get(1).toString());
-		assertEquals("ghi abc def", storage.get(2).toString());
+		assertEquals("Abc def ghi", storage.get(0).toString());
+		assertEquals("Def ghi abc", storage.get(1).toString());
+		assertEquals("Ghi abc def", storage.get(2).toString());
 	}
 	
 	@Test
@@ -40,8 +40,8 @@ public class AlphabetizerTest {
 
 		assertEquals(4, storage.size());
 		assertEquals("A", storage.get(0).toString());
-		assertEquals("b", storage.get(1).toString());
-		assertEquals("c", storage.get(2).toString());
+		assertEquals("B", storage.get(1).toString());
+		assertEquals("C", storage.get(2).toString());
 		assertEquals("D", storage.get(3).toString());
 	}
 }

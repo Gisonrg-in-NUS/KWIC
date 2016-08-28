@@ -15,6 +15,7 @@ public class Alphabetizer implements BaseModule {
 		Line line = storage.get(event.getChangedLine());
 		switch (event.getEventType()) {
 		case ADD:
+			line.capitalizeFirstWord();
 			alphabetize(storage, line, event.getChangedLine());
 			break;
 		default:
@@ -23,6 +24,7 @@ public class Alphabetizer implements BaseModule {
 	}
 
 	private void alphabetize(LineStorage storage, Line line, int lineNumber) {
+		
 		for (int i = 0; i <= (lineNumber - 1); i++) {
 			if (line.compareTo(storage.get(i)) <= 0) {
 				storage.insert(i, line);
